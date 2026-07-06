@@ -296,13 +296,14 @@ function loadProgress() {
         totalSessions: parsed.totalSessions || 0,
         exams: parsed.exams || {},
         forceUnlocked: parsed.forceUnlocked || {},
-        certifiedAt: parsed.certifiedAt || null
+        certifiedAt: parsed.certifiedAt || null,
+        games: parsed.games || {}
       };
     }
   } catch (e) {
     console.warn('[KeyQuest] Could not load progress:', e);
   }
-  return { completedLessons: {}, totalSessions: 0, exams: {}, forceUnlocked: {}, certifiedAt: null };
+  return { completedLessons: {}, totalSessions: 0, exams: {}, forceUnlocked: {}, certifiedAt: null, games: {} };
 }
 
 /**
@@ -437,7 +438,8 @@ const views = {
   intro:        document.getElementById('view-intro'),
   'exam-intro': document.getElementById('view-exam-intro'),
   lesson:       document.getElementById('view-lesson'),
-  results:      document.getElementById('view-results')
+  results:      document.getElementById('view-results'),
+  game:         document.getElementById('view-game')
 };
 
 function showView(name) {
@@ -625,6 +627,8 @@ function renderLevelSections(progress) {
   const container = document.getElementById('levels-container');
   container.innerHTML = '';
 
+  renderGameZone(container, progress);
+
   const nextId = getNextLessonId(progress);
 
   LEVELS.forEach(function(level) {
@@ -675,6 +679,44 @@ function renderLevelSections(progress) {
   finalGrid.appendChild(createExamCard(finalExam, progress, 'var(--gold)'));
   finalSection.appendChild(finalGrid);
   container.appendChild(finalSection);
+}
+
+/**
+ * "Game Zone" section at the top of the home screen — one wide tile that
+ * launches Word Zap (js/game.js). Always available: the word pool falls
+ * back to lesson 1's F/J keys for a brand-new player.
+ */
+function renderGameZone(container, progress) {
+  const best = (progress.games && progress.games.wordzap) || null;
+
+  const section = document.createElement('div');
+  section.className = 'level-section';
+
+  const header = document.createElement('div');
+  header.className = 'level-header';
+  header.innerHTML =
+    '<span class="level-title" style="color:var(--pink)">🎮 Game Zone</span>' +
+    '<span class="level-subtitle">Practice with a game</span>';
+  section.appendChild(header);
+
+  const grid = document.createElement('div');
+  grid.className = 'lessons-grid';
+
+  const tile = document.createElement('div');
+  tile.className = 'lesson-card unlocked game-tile';
+  tile.id = 'game-tile';
+  tile.innerHTML =
+    '<div class="card-exam-icon">⚡</div>' +
+    '<div class="card-title">Word Zap</div>' +
+    '<div class="card-exam-sub">Zap falling words with the keys you know!</div>' +
+    (best && best.highScore
+      ? '<div class="exam-status passed">🏆 Best: ' + best.highScore + '</div>'
+      : '<div class="exam-status ready">Play</div>');
+  tile.addEventListener('click', function() { startWordZap(); });
+  grid.appendChild(tile);
+
+  section.appendChild(grid);
+  container.appendChild(section);
 }
 
 /** Build a test/exam card for the home screen. */

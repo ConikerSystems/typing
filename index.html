@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="icons/icon-192.svg">
 
   <!-- App Stylesheet — ?v= cache-busts on each release (keep in sync with APP_VERSION) -->
-  <link rel="stylesheet" href="css/app.css?v=1.2.1">
+  <link rel="stylesheet" href="css/app.css?v=1.3.0">
 
   <title>KeyQuest — Learn to Type</title>
 </head>
@@ -278,6 +278,59 @@
 
 
   <!-- ==============================================================
+       VIEW 5: WORD ZAP — arcade typing game
+       Words fall; type them to zap them. Uses only unlocked keys.
+       ============================================================== -->
+  <div id="view-game" class="view hidden">
+
+    <!-- Top bar: exit, HUD, pause -->
+    <div class="game-topbar">
+      <button id="btn-game-exit" class="btn-back" aria-label="Back to home">← Home</button>
+
+      <div class="game-hud">
+        <div class="game-hud-item">
+          <span class="game-hud-value" id="game-score">0</span>
+          <span class="game-hud-label">Score <span id="game-streak" class="game-streak"></span></span>
+        </div>
+        <div class="game-hud-item">
+          <span class="game-hud-value" id="game-level">1</span>
+          <span class="game-hud-label">Level</span>
+        </div>
+        <div class="game-hud-item" id="game-lives" aria-label="Lives">
+          <span class="game-heart">❤️</span>
+          <span class="game-heart">❤️</span>
+          <span class="game-heart">❤️</span>
+        </div>
+        <div class="game-hud-item">
+          <span class="game-hud-value" id="game-best">0</span>
+          <span class="game-hud-label">Best</span>
+        </div>
+      </div>
+
+      <button id="btn-game-pause" class="btn-back" aria-label="Pause game">⏸</button>
+    </div>
+
+    <!-- Playfield — words spawn and fall inside here -->
+    <div id="game-playfield" aria-label="Word Zap playfield">
+      <div id="game-ground" aria-hidden="true"></div>
+
+      <!-- Overlay: start / pause / game-over (content set by JS) -->
+      <div id="game-overlay" class="game-overlay hidden">
+        <div class="game-overlay-card">
+          <h1 id="game-overlay-title">⚡ Word Zap</h1>
+          <div id="game-overlay-body"></div>
+          <div class="game-overlay-buttons">
+            <button id="btn-game-start" class="btn btn-primary">Play! →</button>
+            <button id="btn-game-home" class="btn btn-ghost">Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#view-game -->
+
+
+  <!-- ==============================================================
        ABOUT OVERLAY — what KeyQuest is, in simple terms
        ============================================================== -->
   <div id="about-overlay" class="about-overlay hidden">
@@ -319,14 +372,15 @@
        Share + Feedback are handled by the reusable js/feedback.js widget,
        triggered from the header buttons (noFab — no floating button).
        ============================================================== -->
-  <script src="js/version.js?v=1.2.1"></script>
-  <script src="js/lessons.js?v=1.2.1"></script>
-  <script src="js/keyboard.js?v=1.2.1"></script>
-  <script src="js/app.js?v=1.2.1"></script>
+  <script src="js/version.js?v=1.3.0"></script>
+  <script src="js/lessons.js?v=1.3.0"></script>
+  <script src="js/keyboard.js?v=1.3.0"></script>
+  <script src="js/app.js?v=1.3.0"></script>
+  <script src="js/game.js?v=1.3.0"></script>
   <script>
-    window.APP_INFO = { name: "KeyQuest", url: "https://conikersystems.github.io/typing/", email: "info@conikersystems.com", noFab: true, version: "1.2.1" };
+    window.APP_INFO = { name: "KeyQuest", url: "https://conikersystems.github.io/typing/", email: "info@conikersystems.com", noFab: true, version: "1.3.0" };
   </script>
-  <script src="js/feedback.js?v=1.2.1"></script>
+  <script src="js/feedback.js?v=1.3.0"></script>
 
 </body>
 </html>
