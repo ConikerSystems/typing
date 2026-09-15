@@ -590,20 +590,36 @@ function closeAbout() {
 
 // ---- Update button: force-pull the latest version ----
 // iOS often resumes an installed (Home-Screen) app from memory instead of
-// reloading, so it never sees a new release. This updates the service worker,
-// clears caches, and does a cache-busted reload. Needs the network.
+// reloading, so it never sees a new release. This checks the live version first
+// (bypassing every cache) and reports it; if newer, it removes the service worker
+// (r.update() alone is not enough on iOS), clears caches, and does a cache-busted
+// reload. Needs the network.
 function updateApp(btn) {
   if (!navigator.onLine) { alert('Connect to Wi-Fi or cellular, then tap Update again.'); return; }
-  if (btn) btn.textContent = '🔄 Updating…';
-  (async function () {
+  const label = btn ? btn.textContent : '';
+  function say(t) { if (btn) btn.textContent = t; }
+  say('🔄 Checking…');
+  return (async function () {
+    let remote = null;
+    try {
+      const txt = await fetch('js/version.js?u=' + Date.now(), { cache: 'no-store' })
+        .then(function (r) { return r.text(); });
+      remote = (txt.match(/APP_VERSION\s*=\s*"([^"]+)"/) || [])[1] || null;
+    } catch (e) { /* ignore */ }
+    if (remote && remote === APP_VERSION) {
+      say('✅ UP TO DATE — v' + remote);
+      setTimeout(function () { say(label); }, 3000);
+      return;
+    }
+    say(remote ? 'UPDATING TO v' + remote + '…' : 'UPDATING…');
     try {
       if ('serviceWorker' in navigator) {
         const regs = await navigator.serviceWorker.getRegistrations();
-        await Promise.all(regs.map(function (r) { return r.update().catch(function () {}); }));
+        for (const r of regs) await r.unregister();
       }
-      if (window.caches) { const ks = await caches.keys(); await Promise.all(ks.map(function (k) { return caches.delete(k); })); }
+      if (window.caches) { const ks = await caches.keys(); for (const k of ks) await caches.delete(k); }
     } catch (e) { /* ignore */ }
-    location.href = 'index.html?u=' + Date.now();
+    location.replace('index.html?u=' + Date.now());
   })();
 }
 

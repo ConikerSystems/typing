@@ -1,17 +1,24 @@
 # HANDOFF — resume notes for the next session
-_Updated 2026-07-06 · KeyQuest (typing) · local (Mac)_
+_Updated 2026-09-15 · KeyQuest (typing)_
 
 **Start here:** check git sync (Claude does all git — sync at start, push at end), then read
 this, then `CLAUDE.md`.
 
 ## Where things stand
-- Version **1.3.0**; service-worker cache **keyquest-v14**. Single source of version:
+- Version **1.3.1**; service-worker cache **keyquest-v15**. Single source of version:
   `js/version.js` (`window.APP_VERSION`); keep the `?v=` query strings in `index.html` +
   `about.html` and `CACHE_NAME` in `sw.js` in lockstep when bumping.
 - Pushed to `github.com/ConikerSystems/typing` (origin/main). Hosted at
   `conikersystems.github.io/typing/`.
 
 ## What we did (recent sessions)
+- **1.3.1 (2026-09-15) — Update button + SW brought to the Hub standard** (ported from Axis):
+  `updateApp()` in `js/app.js` fetches `js/version.js?u=…` with `cache:'no-store'`, shows
+  "✅ UP TO DATE — vX" or "UPDATING TO vY…", and when newer **unregisters** all SW registrations
+  (was `r.update()`, not enough on iPad), deletes caches, then `location.replace`. `sw.js` fetch
+  uses `{cache:'no-store'}`, precache uses `new Request(u, {cache:'reload'})`. `?v=` strings
+  bumped to 1.3.1. `.gitignore` gained the Hub sensitive-files block. Verified in a local
+  browser (SW registered manually, since the app skips it on localhost); not yet on a real iPad.
 - **NEW: Word Zap arcade game** (v1.3.0) — typing.com-style engagement layer. Words fall from
   the top of a playfield; type them to zap them before they hit the ground. 3 landed words =
   game over. All in **`js/game.js`**:

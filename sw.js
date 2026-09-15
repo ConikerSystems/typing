@@ -4,7 +4,7 @@
  * reach devices), full offline support from cache.
  */
 
-const CACHE_NAME = 'keyquest-v14';
+const CACHE_NAME = 'keyquest-v15';
 
 // All files to cache for offline use.
 // Relative paths (./) so the app works from any folder — e.g. GitHub Pages
@@ -33,7 +33,8 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('[SW] Caching app files');
-        return cache.addAll(CACHE_FILES);
+        // cache:'reload' bypasses the HTTP cache so the precache is truly current
+        return cache.addAll(CACHE_FILES.map(function (u) { return new Request(u, { cache: 'reload' }); }));
       })
       .then(() => {
         console.log('[SW] All files cached successfully');
@@ -77,7 +78,10 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    fetch(event.request)
+    // cache:'no-store' makes network-first REALLY network-first: a plain fetch()
+    // can be answered by the HTTP cache with a stale file, which we would then
+    // re-save into our cache — locking an old version in (learned on iOS).
+    fetch(event.request, { cache: 'no-store' })
       .then((networkResponse) => {
         // Cache a fresh copy of valid same-origin responses for offline use
         if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
