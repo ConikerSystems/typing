@@ -4,7 +4,7 @@
     {
       "name": "keyquest",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "5020", "--directory", "/Users/josephconiker/Documents/claude/typing"],
+      "runtimeArgs": ["-m", "http.server", "5020", "--directory", "."],
       "port": 5020
     }
   ]
