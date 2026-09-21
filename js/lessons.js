@@ -87,9 +87,9 @@ const LESSONS = [
     tip: 'Real words now! Keep your fingers on the home row — every letter in these words lives right there.',
     exercises: [
       'sad ask all fall adds flask lads lass',
-      'dad fad slab glad ask falls asks dads',
-      'all sad fads flash flasks salads lads',
-      'asks dads falls flask salad glad lass dad'
+      'dad fad salad lass ask falls asks dads',
+      'all sad fads flask flasks salads lads',
+      'asks dads falls flask salad fads lass dad'
     ]
   },
 
@@ -101,10 +101,10 @@ const LESSONS = [
     targetWPM: 13,
     tip: 'More home row words! Focus on accuracy first — speed will come naturally with practice.',
     exercises: [
-      'alfalfa lads fall flask salad asks glad',
+      'alfalfa lads fall flask salad asks dads',
       'flasks salads dads falls lass all alfalfa',
-      'glad lads ask falls sad flask alfalfa dads',
-      'salad lass flask glad falls dads asks alfalfa'
+      'salad lads ask falls sad flask alfalfa dads',
+      'salad lass flask adds falls dads asks alfalfa'
     ]
   },
 
@@ -116,10 +116,10 @@ const LESSONS = [
     targetWPM: 13,
     tip: 'Short sentences using only home row keys. Read ahead one or two words so your fingers are ready!',
     exercises: [
-      'a sad lad falls all day',
+      'a sad lad falls as dad asks',
       'dad asks a lass flask sad falls',
-      'all lads ask dad flask salads glad',
-      'flask salad falls sad glad lass all asks'
+      'all lads ask dad flask salads fads',
+      'flask salad falls sad dads lass all asks'
     ]
   },
 
@@ -131,10 +131,10 @@ const LESSONS = [
     targetWPM: 15,
     tip: 'Push your speed on these home row drills! You know all these keys — let your muscle memory take over.',
     exercises: [
-      'sad lad dad flask salad asks all falls glad',
-      'all asks dads falls flasks salads glad lads',
-      'sad dad flask glad lads lass ask falls salad',
-      'dad asks all lads flask salads falls glad lass'
+      'sad lad dad flask salad asks all falls lass',
+      'all asks dads falls flasks salads fads lads',
+      'sad dad flask adds lads lass ask falls salad',
+      'dad asks all lads flask salads falls fads lass'
     ]
   },
 
@@ -180,10 +180,10 @@ const LESSONS = [
     targetWPM: 15,
     tip: 'T and Y sit in the center of the keyboard. Left index reaches to T, right index reaches to Y.',
     exercises: [
-      'try yet type stay tree year rely style',
+      'try yet tidy stay tree year rely style',
       'daily taste style dusty year try yet truly',
       'stay daily tasty style try year truly dirty',
-      'style truly stay dusty tasty trees daily year type'
+      'style truly stay dusty tasty trees daily year trusty'
     ]
   },
 
@@ -289,10 +289,10 @@ const LESSONS = [
     targetWPM: 19,
     tip: 'Z is the bottom-left pinky key and slash is the bottom-right. These are rare but important keys!',
     exercises: [
-      'zip zero zone fizz quiz, size/style, maze',
-      'fuzzy/cozy zero size quiz zone zip maze.',
-      'zero zip maze, zone quiz size. fuzzy cozy/',
-      'zip size, maze zone. zero quiz cozy fuzzy/style'
+      'zip zero zoom fizz quiz, size/style, maze',
+      'fuzzy/cozy zero size quiz zoom zip maze.',
+      'zero zip maze, zoom quiz size. fuzzy cozy/',
+      'zip size, maze zoom. zero quiz cozy fuzzy/style'
     ]
   },
 
@@ -305,9 +305,9 @@ const LESSONS = [
     tip: 'B is left index reaching down-right, N is right index reaching down-left. Both index fingers again!',
     exercises: [
       'bone brain blend born new. bronze noble',
-      'born noble brain, next bench blind bone.',
-      'bench noble blend. born brain, bronze next.',
-      'born next brain, noble blend. bone bronze bench'
+      'born noble brain, next bonnet blind bone.',
+      'binder noble blend. born brain, bronze next.',
+      'born next brain, noble blend. bone bronze banner'
     ]
   },
 
@@ -394,7 +394,7 @@ const LESSONS = [
     id: 25,
     level: 4,
     title: 'Numbers 1 through 5',
-    keys: ['1','2','3','4','5','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['1','2','3','4','5','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 16,
     tip: 'Keep your fingers on the home row and stretch your LEFT hand up to reach numbers 1 through 5. Left pinky gets 1, left ring gets 2, and so on.',
     exercises: [
@@ -409,7 +409,7 @@ const LESSONS = [
     id: 26,
     level: 4,
     title: 'Numbers 6 through 0',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 16,
     tip: 'Now stretch your RIGHT hand up for 6 through 0. Right index covers 6 and 7, right middle gets 8, right ring gets 9, and right pinky handles 0.',
     exercises: [
@@ -424,7 +424,7 @@ const LESSONS = [
     id: 27,
     level: 4,
     title: 'Numbers Review',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 18,
     tip: 'All 10 digits mixed with real words. Numbers appear everywhere in writing — get comfortable switching between letters and numbers!',
     exercises: [
@@ -439,7 +439,7 @@ const LESSONS = [
     id: 28,
     level: 4,
     title: 'Capital Letters — Sentence Starts',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 18,
     tip: 'Every sentence starts with a capital letter. Hold Shift with the OPPOSITE hand from the letter — so for "T", hold Right Shift with your right pinky.',
     exercises: [
@@ -454,7 +454,7 @@ const LESSONS = [
     id: 29,
     level: 4,
     title: 'Capital Letters — Names',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 19,
     tip: 'Names of people and places always start with a capital. Think of each capital as a small pause — hold Shift, press the letter, release both.',
     exercises: [
@@ -469,7 +469,7 @@ const LESSONS = [
     id: 30,
     level: 4,
     title: 'Mixed Capitals',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 20,
     tip: 'A mix of sentence capitals and proper nouns. Scan ahead for capital letters so your shift hand is ready before you need it!',
     exercises: [
@@ -484,7 +484,7 @@ const LESSONS = [
     id: 31,
     level: 4,
     title: 'Numbers and Capitals Together',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 22,
     tip: 'Numbers, capitals, and full sentences together — just like real writing! Stay relaxed and let your eyes read ahead.',
     exercises: [
@@ -499,7 +499,7 @@ const LESSONS = [
     id: 32,
     level: 4,
     title: 'Grand Speed Challenge',
-    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    keys: ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',';',',','.','/'],
     targetWPM: 28,
     tip: 'The ultimate challenge — numbers, capitals, and amazing facts! You have come so far. Type with confidence and show everyone what you can do!',
     exercises: [

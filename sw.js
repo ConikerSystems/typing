@@ -4,7 +4,7 @@
  * reach devices), full offline support from cache.
  */
 
-const CACHE_NAME = 'keyquest-v15';
+const CACHE_NAME = 'keyquest-v16';
 
 // All files to cache for offline use.
 // Relative paths (./) so the app works from any folder — e.g. GitHub Pages
@@ -93,9 +93,17 @@ self.addEventListener('fetch', (event) => {
         return networkResponse;
       })
       .catch(() => {
-        // Network unavailable — serve from cache, or the app shell as a fallback
-        return caches.match(event.request).then((cached) => {
-          return cached || caches.match('./index.html');
+        // Network unavailable — serve from cache.
+        // ignoreSearch matters: index.html asks for 'js/app.js?v=1.3.2' but the
+        // precache holds './js/app.js'. An exact match misses on the '?v=' and
+        // the old app-shell fallback then answered a <script> tag with HTML —
+        // which loaded a styleless, dead app on the first offline launch.
+        return caches.match(event.request, { ignoreSearch: true }).then((cached) => {
+          if (cached) return cached;
+          // Only a page navigation may fall back to the app shell. Handing
+          // index.html to a script or stylesheet request is worse than failing.
+          if (event.request.mode === 'navigate') return caches.match('./index.html');
+          return Response.error();
         });
       })
   );

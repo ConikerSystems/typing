@@ -510,6 +510,10 @@ html, body {
 .share-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  /* 44px is Apple's minimum comfortable touch target — these header chips
+     were 37px tall, which is a small target for a child on an iPad. */
+  min-height: 44px;
   gap: 6px;
   background: var(--bg);
   border: 1.5px solid var(--border);
@@ -533,6 +537,7 @@ html, body {
 .profile-chip {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;   /* match .share-btn — comfortable iPad touch target */
   gap: 8px;
   background: var(--bg);
   border: 1.5px solid var(--border);
@@ -1634,7 +1639,8 @@ body.about-page .logo-wrap .logo-emoji { font-size: 24px; }
 body.about-page .nav { display: flex; align-items: center; gap: 10px; }
 body.about-page .chip { font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; text-decoration: none;
   background: var(--bg); border: 1.5px solid var(--border); color: var(--text); border-radius: 22px; padding: 8px 14px;
-  cursor: pointer; display: inline-flex; align-items: center; }
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; }   /* comfortable iPad touch target, matches .share-btn */
 body.about-page .chip:hover { border-color: var(--gold); color: var(--gold); }
 body.about-page .about-main { max-width: 760px; margin: 0 auto; padding: 36px 22px 60px; }
 body.about-page .about-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg);
