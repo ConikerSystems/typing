@@ -48,6 +48,23 @@ const FINGER_MAP = {
 
   // Space — gray
   ' ': 'finger-space',
+
+  // Shifted punctuation — same finger as the unshifted key it shares.
+  // Exam passages use ':' (as in "6:30") and '!', and getFingerName() returns
+  // '' for anything missing here, which would blank the finger hint.
+  '!': 'finger-l-pinky',   // Shift + 1
+  '@': 'finger-l-ring',    // Shift + 2
+  '#': 'finger-l-mid',     // Shift + 3
+  '$': 'finger-l-idx',     // Shift + 4
+  '%': 'finger-l-idx',     // Shift + 5
+  '^': 'finger-r-idx',     // Shift + 6
+  '&': 'finger-r-idx',     // Shift + 7
+  '*': 'finger-r-mid',     // Shift + 8
+  '(': 'finger-r-ring',    // Shift + 9
+  ')': 'finger-r-pinky',   // Shift + 0
+  ':': 'finger-r-pinky',   // Shift + ;
+  '"': 'finger-r-pinky',   // Shift + '
+  '?': 'finger-r-pinky',   // Shift + /
 };
 
 // ---------------------------------------------------------------
